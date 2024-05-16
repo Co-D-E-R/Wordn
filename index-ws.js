@@ -17,6 +17,14 @@ const websocket = require('ws').Server;
 
 const wss = new websocket({server: server});
 
+process.on('SIGINT',()=>{
+    console.log('Closing everything');
+    wss.clients.forEach(function each(client){
+        client.close();
+    });
+    
+})
+
 wss.on('connection',function connection(ws){
     const num = wss.clients.size;
     console.log("Connected clients: ",num);
