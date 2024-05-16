@@ -23,7 +23,7 @@ wss.on('connection',function connection(ws){
 
     wss.broadcast(`Current user ${num}`);
 
-    if(ws.readyState ===  ws.open){
+    if(ws.readyState ===  ws.OPEN){
         ws.send('Welcome to the chat room');
     }
 
